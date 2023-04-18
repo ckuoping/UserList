@@ -1,0 +1,12 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Ruby",
+      "lastName": "Du",
+      "email": "abc@yam.com",
+      "mobile": "091234567",
+      "salary": "$500000"
+    }
+  ]
+}

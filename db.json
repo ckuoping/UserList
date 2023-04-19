@@ -6,7 +6,23 @@
       "lastName": "Du",
       "email": "abc@yam.com",
       "mobile": "091234567",
-      "salary": "$500000"
+      "salary": "500000"
+    },
+    {
+      "id": 2,
+      "firstName": "Ruby",
+      "lastName": "Du",
+      "email": "123@gmail.com",
+      "mobile": "1234567",
+      "salary": "600000"
+    },
+    {
+      "id": 3,
+      "firstName": "Kent",
+      "lastName": "Yang",
+      "email": "wer@gmail.com",
+      "mobile": "0987654321",
+      "salary": "5567554"
     }
   ]
 }

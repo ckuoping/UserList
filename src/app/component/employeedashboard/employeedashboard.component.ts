@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild, ElementRef} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Employee } from 'src/app/class/employee';
 import { ApiService } from 'src/app/service/api.service';
@@ -12,6 +12,9 @@ export class EmployeedashboardComponent implements OnInit {
 
   formValue !: FormGroup;
   employeeObj : Employee = new Employee();
+  employeeArr : Employee[] = [];
+
+  @ViewChild('cancel', { static: true }) cancel_btn!: ElementRef;
 
   constructor(private formbuilder : FormBuilder, private api : ApiService) { }
 
@@ -28,6 +31,8 @@ export class EmployeedashboardComponent implements OnInit {
 
     )
 
+    this.getEmployeeDetails()
+
   }
 
   postEmployeeDetails(){
@@ -40,10 +45,24 @@ export class EmployeedashboardComponent implements OnInit {
       res =>{
       console.log('res',res)
       alert("successfully add a employee");
+
+      this.cancel_btn.nativeElement.click();
+
       this.formValue.reset();
     },err =>{
       alert("fail to add a employee")
     }
+    )
+  }
+
+  getEmployeeDetails(){
+    this.api.getEmployee().subscribe(
+      res =>{
+        this.employeeArr = res;
+      },
+      err=>{
+        console.log(err+'fail to get all details')
+      }
     )
   }
 

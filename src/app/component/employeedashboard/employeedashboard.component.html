@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <h3 class="nav-title">Employee Dashboard</h3>
         <div class="d-flex">
-            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=" onAdd();isEdit = false">Add Employee</button>
         </div>
     </div>
 </nav>
@@ -30,8 +30,8 @@
             <td>{{employee.mobile}}</td>
             <td>${{employee.salary}}</td>
             <td>
-                <button class="btn btn-info">Edit</button>
-                <button class="btn btn-danger mx-3">Delete</button>
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(employee);isEdit = true">Edit</button>
+                <button class="btn btn-danger mx-3" (click)="deleteEmployee(employee)">Delete</button>
             </td>
         </tr>
     </tbody>
@@ -74,8 +74,9 @@
               </form>
         </div>
         <div class="modal-footer">
-          <button type="button" #cancel  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="postEmployeeDetails()">Add</button>
+          <button type="button" #cancel  class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary" (click)="postEmployeeDetails()" *ngIf="!isEdit"  >Add</button>
+          <button type="button" class="btn btn-warning" (click)="updateEmplyee()" *ngIf="isEdit">Update</button>
         </div>
       </div>
     </div>
